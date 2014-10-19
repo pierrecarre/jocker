@@ -20,8 +20,9 @@ there's also [Spotify one](https://github.com/spotify/docker-client) and probabl
 
 The intent of Jocker is to offer a lightweight, KISS client library to docker daemon.
 
-  - No REST framework is used, and library as a minimal set of dependencies,
-    just apache [http client](http://hc.apache.org/) and [GSon](https://code.google.com/p/google-gson/) for minimal JSON binding.
+  - No advanced REST framework is used, and only rely on a minimal set of dependencies,
+    just apache [http client](http://hc.apache.org/) and [Boon](http://richardhightower.github.io/site/Boon/Welcome.html)
+    for lightweight and efficient JSON binding.
   - Unix socket support is a requirement.
   - It target latest Docker API - 1.15 (Docker 1.3.0) at time writing - so address the TLS
     authentication requirement.

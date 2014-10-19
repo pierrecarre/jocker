@@ -1,6 +1,7 @@
 package com.cloudbees.jocker.model;
 
 import java.util.Arrays;
+import java.util.Set;
 
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
@@ -12,7 +13,7 @@ public class Container {
     private String Command;
     private String Created;
     private String Status;
-    private Port[] Ports;
+    private Set<Port> Ports;
     private String SizeRw;
     private String SizeRootFs;
 
@@ -36,7 +37,7 @@ public class Container {
         return Status;
     }
 
-    public Port[] getPorts() {
+    public Set<Port> getPorts() {
         return Ports;
     }
 
@@ -56,7 +57,7 @@ public class Container {
                 ", Command='" + Command + '\'' +
                 ", Created='" + Created + '\'' +
                 ", Status='" + Status + '\'' +
-                ", Ports=" + Arrays.toString(Ports) +
+                ", Ports=" + Ports +
                 ", SizeRw='" + SizeRw + '\'' +
                 ", SizeRootFs='" + SizeRootFs + '\'' +
                 '}';
