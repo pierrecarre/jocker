@@ -86,4 +86,8 @@ public class Docker {
         return new ListContainers(this);
     }
 
+    public InspectContainer inspect(String id) throws IOException {
+        return new InspectContainer(this, id);
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.cloudbees.jocker.model;
 
+import org.boon.core.Dates;
+
 import java.util.Date;
 
 /**
@@ -10,7 +12,7 @@ public class State {
     private boolean Running;
     private int Pid;
     private int ExitCode;
-    private Date StartedAt;
+    private String StartedAt;
     private boolean Ghost;
 
     public boolean isRunning() {
@@ -26,7 +28,8 @@ public class State {
     }
 
     public Date getStartedAt() {
-        return StartedAt;
+        // Can't use native conversion to Date because Docker API return sub-milisecond date precision
+        return Dates.fromJsonDate(StartedAt);
     }
 
     public boolean isGhost() {
