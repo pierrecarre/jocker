@@ -3,10 +3,10 @@ package com.cloudbees.jocker;
 import com.cloudbees.jocker.model.Container;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.boon.json.JsonParserAndMapper;
+import org.boon.json.JsonParserFactory;
 import org.boon.json.ObjectMapper;
-import org.boon.json.ObjectMapperFactory;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,6 +28,32 @@ public class ListContainers {
         get = new HttpGet(daemon.url+"/containers/json");
     }
 
+    public ListContainers all() {
+        // TODO
+        return this;
+    }
+
+    public ListContainers limit() {
+        // TODO
+        return this;
+    }
+
+    public ListContainers since() {
+        // TODO
+        return this;
+    }
+
+    public ListContainers before() {
+        // TODO
+        return this;
+    }
+
+    public ListContainers size() {
+        // TODO
+        return this;
+    }
+
+
     public List<Container> execute() throws IOException {
         get.setHeader("User-Agent", "Docker-Client/1.15 (Jocker;compatbile)");
         get.setHeader("Accept", "application/json");
@@ -37,8 +63,8 @@ public class ListContainers {
             if (statusCode != SC_OK) {
                 throw new IOException("Failed to connect to Docker daemon " + statusCode);
             }
-            ObjectMapper boon =  ObjectMapperFactory.create();
-            return boon.readValue(response.getEntity().getContent(), List.class, Container.class);
+            JsonParserAndMapper boon = new JsonParserFactory().create();
+            return boon.parseList(Container.class, response.getEntity().getContent());
         }
     }
 

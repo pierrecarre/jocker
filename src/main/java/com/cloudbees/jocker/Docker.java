@@ -82,7 +82,7 @@ public class Docker {
     /**
      * Uses <a href="https://docs.docker.com/reference/api/docker_remote_api_v1.15/#list-containers"/>
      */
-    public ListContainers getContainers() throws IOException {
+    public ListContainers ps() throws IOException {
         return new ListContainers(this);
     }
 

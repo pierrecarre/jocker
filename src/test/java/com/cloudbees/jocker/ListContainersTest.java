@@ -12,6 +12,6 @@ public class ListContainersTest {
     @Test
     public void should_list_containers() throws IOException {
         System.out.println(
-                new Docker().getContainers().execute());
+                new Docker().ps().execute());
     }
 }
